@@ -1,12 +1,36 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import CustomHeaderButton from "../components/HeaderButton";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+
+
+import { MEALS } from "../data/dummy-data";
+
 
 const MealDetailScreen = props => {
+    const mealId = props.navigation.getParam("mealId");
+    
+    const selectedMeal = MEALS.find(meal => meal.id === mealId) 
+
     return (
         <View style={styles.screen}>
-            <Text>The meal details screen</Text>
+            <Text>{selectedMeal.title}</Text>
         </View>
     );
+}
+
+MealDetailScreen.navigationOptions = (navigationData) => {
+    const mealId = navigationData.navigation.getParam("mealId");
+    const selectedMeal = MEALS.find(meal => meal.id ===mealId)
+    return {
+        headerTitle: selectedMeal.title,
+        headerRight: 
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                <Item title="Favorite" iconName="ios-star" onPress={() => {
+                    console.log("Mark as favorite")
+                }}/>
+            </HeaderButtons>
+    };
 }
 
 const styles = StyleSheet.create({
