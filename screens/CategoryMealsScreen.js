@@ -32,15 +32,10 @@ const CategoryMealsScreen = props => {
     const displayedMeals = MEALS.filter(cat => cat.categoryIds.indexOf(catId) >= 0)
 
     return (
-        // <View style={styles.screen}>
-        //     <FlatList 
-        //         data={displayedMeals} 
-        //         keyExtractor={(item, index) => item.id} 
-        //         renderItem={renderMealItem}
-        //         style={{width: "100%"}}
-        //     />
-        // </View>
-        <MealList renderMealItem={renderMealItem} displayedMeals={displayedMeals}/>
+        <MealList 
+            renderMealItem={renderMealItem} 
+            displayedMeals={displayedMeals}
+        />
     );
 }
 
