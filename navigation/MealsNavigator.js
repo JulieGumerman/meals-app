@@ -95,7 +95,10 @@ const MainNavigator = createDrawerNavigator({
     Filters:  FiltersNavigator
 }, {
     contentOptions: {
-        activeTintColor: Colors.accentColor
+        activeTintColor: Colors.accentColor,
+        labelStyle: {
+            
+        }
     }
 })
 
